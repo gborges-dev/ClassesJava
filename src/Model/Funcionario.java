@@ -4,7 +4,7 @@ import Enum.Sexos;
 import Enum.Cargos;
 import java.time.LocalDate;
 
-public class Funcionario {
+public class Funcionario implements java.io.Serializable{
     private String nome;
     private LocalDate nascimento;
     private double salario;
