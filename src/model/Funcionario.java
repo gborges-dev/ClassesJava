@@ -1,7 +1,6 @@
-package Model;
+package model;
 
-import Enum.Sexos;
-import Enum.Cargos;
+import enums.Sexos;
 import java.time.LocalDate;
 
 public class Funcionario implements java.io.Serializable{
@@ -9,17 +8,17 @@ public class Funcionario implements java.io.Serializable{
     private LocalDate nascimento;
     private double salario;
     private Sexos sexos;
-    private Cargos cargos;
+    private Cargo cargos;
 
     public Funcionario() {
-        this.setCargos(Cargos.O);
+        this.setCargos(null);
         this.setNascimento(LocalDate.now());
         this.setNome("sem nome");
         this.setSalario(1212);
         this.setSexos(Sexos.O);
     }
     
-    public Funcionario(String nome, LocalDate nascimento, double salario, Sexos sexos, Cargos cargos) {
+    public Funcionario(String nome, LocalDate nascimento, double salario, Sexos sexos, Cargo cargos) {
         this.setNome(nome);
         this.setNascimento(nascimento);
         this.setSalario(salario);
@@ -43,7 +42,7 @@ public class Funcionario implements java.io.Serializable{
         return this.sexos;
     }
 
-    public Cargos getCargos() {
+    public Cargo getCargos() {
         return this.cargos;
     }
 
@@ -63,8 +62,8 @@ public class Funcionario implements java.io.Serializable{
         this.sexos = sexos;
     }
 
-    public void setCargos(Cargos cargos) {
-        this.cargos = cargos;
+    public void setCargos(Cargo cargos) {
+        this.cargos = cargos != null ? cargos : new Cargo();
     }
 
     @Override

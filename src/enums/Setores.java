@@ -1,14 +1,13 @@
-package Enum;
+package enums;
 
-public enum Cargos {
-    G("Gerente"),
-    F("Fiscal"),
-    O("Operador de Caixa"),
-    R("Repositor");
+public enum Setores {
+    A("Administração"),
+    F("Frente de Caixa"),
+    L("Loja");
     //
     private String descricao;
     //
-    private Cargos(String descricao) {
+    private Setores(String descricao) {
         this.descricao = descricao;
     }
     //
@@ -16,4 +15,4 @@ public enum Cargos {
     public String toString() {
         return descricao;
     }
-}
+ }
