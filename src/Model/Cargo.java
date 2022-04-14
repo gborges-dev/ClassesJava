@@ -1,19 +1,17 @@
 package Model;
 
-import Enum.Setores;
-
 public class Cargo implements java.io.Serializable{
     private String nome;
     private String descricao;
-    private Setores setor;
+    private Setor setor;
 
     public Cargo() {
         this.setNome("Sem nome");
         this.setDescricao("Sem descrição");
-        this.setSetor(Setores.L);
+        this.setSetor(null);
     }
 
-    public Cargo(String nome, String descricao, Setores setor) {
+    public Cargo(String nome, String descricao, Setor setor) {
         this.setNome(nome);
         this.setDescricao(descricao);
         this.setSetor(setor);
@@ -27,7 +25,7 @@ public class Cargo implements java.io.Serializable{
         return this.descricao;
     }
 
-    public Setores getSetor() {
+    public Setor getSetor() {
         return this.setor;
     }
 
@@ -39,8 +37,8 @@ public class Cargo implements java.io.Serializable{
         this.descricao = (descricao.trim().isEmpty() ? "Sem descrição" : descricao);
     }
 
-    public void setSetor(Setores setor) {
-        this.setor = setor;
+    public void setSetor(Setor setor) {
+        this.setor = setor != null ? setor : new Setor();
     }
     @Override
     public String toString() {
