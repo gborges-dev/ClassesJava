@@ -7,8 +7,8 @@ public class Funcionario implements java.io.Serializable{
     private String nome;
     private LocalDate nascimento;
     private double salario;
-    private Sexos sexos;
-    private Cargo cargos;
+    private Sexos sexo;
+    private Cargo cargo;
 
     public Funcionario() {
         this.setCargos(null);
@@ -18,12 +18,12 @@ public class Funcionario implements java.io.Serializable{
         this.setSexos(Sexos.O);
     }
     
-    public Funcionario(String nome, LocalDate nascimento, double salario, Sexos sexos, Cargo cargos) {
+    public Funcionario(String nome, LocalDate nascimento, double salario, Sexos sexo, Cargo cargo) {
         this.setNome(nome);
         this.setNascimento(nascimento);
         this.setSalario(salario);
-        this.setSexos(sexos);
-        this.setCargos(cargos);
+        this.setSexos(sexo);
+        this.setCargos(cargo);
     }
 
     public String getNome() {
@@ -39,11 +39,11 @@ public class Funcionario implements java.io.Serializable{
     }
 
     public Sexos getSexos() {
-        return this.sexos;
+        return this.sexo;
     }
 
     public Cargo getCargos() {
-        return this.cargos;
+        return this.cargo;
     }
 
     public void setNome(String nome) {
@@ -59,11 +59,11 @@ public class Funcionario implements java.io.Serializable{
     }
 
     public void setSexos(Sexos sexos) {
-        this.sexos = sexos;
+        this.sexo = sexos;
     }
 
     public void setCargos(Cargo cargos) {
-        this.cargos = cargos != null ? cargos : new Cargo();
+        this.cargo = cargos != null ? cargos : new Cargo();
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Funcionario implements java.io.Serializable{
                "Nome: " + nome + "\n" +
                "Nascimento: " + nascimento + "\n" +
                "Salario: " + salario + "\n" +
-               "Sexos: " + sexos + "\n" +
-               "cargos: " + cargos;
+               "Sexos: " + sexo + "\n" +
+               "cargos: " + cargo;
     }
 }
