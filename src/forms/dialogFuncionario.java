@@ -4,25 +4,25 @@
  */
 package forms;
 
+import abstratas.Dados;
 import enums.Cargos;
 import enums.Sexos;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import model.Funcionario;
 
 /**
  *
  * @author Gabri
  */
-public class Funcionario extends javax.swing.JDialog {
+public class dialogFuncionario extends javax.swing.JDialog {
     
     private DateTimeFormatter formato =
            DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    private Funcionario(String text, LocalDate data, Sexos sexos, Cargos cargos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
     //
     private void loadInputSexo(){
         DefaultComboBoxModel cbm = 
@@ -36,7 +36,7 @@ public class Funcionario extends javax.swing.JDialog {
         inputCargo.setModel(cbm);
     }
     //
-    public Funcionario(java.awt.Frame parent, boolean modal) {
+    public dialogFuncionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -60,6 +60,8 @@ public class Funcionario extends javax.swing.JDialog {
         buttonGravar = new javax.swing.JButton();
         buttonListar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowStateListener(new java.awt.event.WindowStateListener() {
@@ -154,6 +156,11 @@ public class Funcionario extends javax.swing.JDialog {
         });
 
         buttonListar.setText("Listar");
+        buttonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,7 +186,7 @@ public class Funcionario extends javax.swing.JDialog {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonListar)
@@ -222,18 +229,27 @@ public class Funcionario extends javax.swing.JDialog {
         jLabel1.setText("Cadastro de Funcionários");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
+        areaTexto.setColumns(20);
+        areaTexto.setRows(5);
+        jScrollPane1.setViewportView(areaTexto);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +258,9 @@ public class Funcionario extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,7 +330,12 @@ public class Funcionario extends javax.swing.JDialog {
         LocalDate data = LocalDate.parse(inputNascimento.getText(),
                                          formato);
         //
-        Funcionario funcionario = new Funcionario(inputNome.getText(), data, (Sexos)inputSexo.getSelectedItem(),(Cargos)inputCargo.getSelectedItem());
+        Funcionario funcionario = new Funcionario(
+                                        inputNome.getText(),
+                                        data,
+                                        (Double)inputSalario.getValue(), 
+                                        (Sexos)inputSexo.getSelectedItem(), 
+                                        (Cargos)inputCargo.getSelectedItem());
         //
         Dados.getListaFuncionario().add(funcionario);
         JOptionPane.showMessageDialog(null, "Criado com sucesso");
@@ -320,6 +343,14 @@ public class Funcionario extends javax.swing.JDialog {
         inputNascimento.setText("");
       
     }//GEN-LAST:event_buttonGravarActionPerformed
+
+    private void buttonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarActionPerformed
+        // TODO add your handling code here:
+        areaTexto.setText("---Lista de Funcionários---\n");
+        for(Funcionario funcionario : Dados.getListaFuncionario()){
+            areaTexto.append(funcionario.getNome()+"\t"+funcionario.getNascimento().format(formato)+"\n");
+        }
+    }//GEN-LAST:event_buttonListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +382,7 @@ public class Funcionario extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Funcionario dialog = new Funcionario(new javax.swing.JFrame(), true);
+                dialogFuncionario dialog = new dialogFuncionario(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -364,6 +395,7 @@ public class Funcionario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
     private javax.swing.JButton buttonGravar;
     private javax.swing.JButton buttonListar;
     private javax.swing.JComboBox<String> inputCargo;
@@ -379,5 +411,6 @@ public class Funcionario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
