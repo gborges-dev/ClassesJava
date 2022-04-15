@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import model.Cargo;
 import model.Funcionario;
 
 /**
@@ -335,7 +336,7 @@ public class dialogFuncionario extends javax.swing.JDialog {
                                         data,
                                         (Double)inputSalario.getValue(), 
                                         (Sexos)inputSexo.getSelectedItem(), 
-                                        (Cargos)inputCargo.getSelectedItem());
+                                        (Cargo)inputCargo.getSelectedItem());
         //
         Dados.getListaFuncionario().add(funcionario);
         JOptionPane.showMessageDialog(null, "Criado com sucesso");
