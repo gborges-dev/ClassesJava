@@ -148,6 +148,11 @@ public class dialogFuncionario extends javax.swing.JDialog {
         jLabel6.setText("Cargo:");
 
         inputCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        inputCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCargoActionPerformed(evt);
+            }
+        });
 
         buttonGravar.setText("Gravar");
         buttonGravar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +256,13 @@ public class dialogFuncionario extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
                 .addContainerGap())
+<<<<<<< HEAD:src/forms/Funcionario.java
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+>>>>>>> 117bcc26bd54e17e8d0bad9b4e838142538d92cc:src/forms/dialogFuncionario.java
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,6 +357,11 @@ public class dialogFuncionario extends javax.swing.JDialog {
       
     }//GEN-LAST:event_buttonGravarActionPerformed
 
+
+    private void inputCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCargoActionPerformed
+
     private void buttonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarActionPerformed
         // TODO add your handling code here:
         areaTexto.setText("---Lista de Funcionários---\n");
@@ -352,10 +369,6 @@ public class dialogFuncionario extends javax.swing.JDialog {
             areaTexto.append(funcionario.getNome()+"\t"+funcionario.getNascimento().format(formato)+"\n");
         }
     }//GEN-LAST:event_buttonListarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
