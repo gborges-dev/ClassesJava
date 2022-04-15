@@ -4,6 +4,7 @@
  */
 package forms;
 
+import abstratas.Dados;
 import enums.Cargos;
 import enums.Sexos;
 import java.time.LocalDate;
@@ -145,6 +146,11 @@ public class Funcionario extends javax.swing.JDialog {
         jLabel6.setText("Cargo:");
 
         inputCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        inputCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCargoActionPerformed(evt);
+            }
+        });
 
         buttonGravar.setText("Gravar");
         buttonGravar.addActionListener(new java.awt.event.ActionListener() {
@@ -233,7 +239,7 @@ public class Funcionario extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,6 +326,10 @@ public class Funcionario extends javax.swing.JDialog {
         inputNascimento.setText("");
       
     }//GEN-LAST:event_buttonGravarActionPerformed
+
+    private void inputCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCargoActionPerformed
 
     /**
      * @param args the command line arguments
